@@ -1,0 +1,31 @@
+.header {
+    height: 95vh; /* 95% of the viewport height */
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.80),
+        rgba($color-primary-dark, 0.80)
+    ),
+    url('../img/hero.jpg');
+    background-size: cover; /* always try to fit inside the containing box */
+    background-position: top; /* whatever the viewport size, the top of the image is always at the top of the container */
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+    &__logo-box {
+        position: absolute; /* absolutely positioned inside the containing element, which has to have relative positioning */
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        position: absolute;
+        top: 40%; /* these position values will not actually center the container content */
+        left: 50%; /* it's slightly confusing, but it's doing what it's supposed to (the left hand corner is exactly positioned to the center) */
+        transform: translate(-50%, -50%); /* these values are in relation to the element itself, not its parent - this will complete the centering of the content */
+        text-align: center;
+    }
+}

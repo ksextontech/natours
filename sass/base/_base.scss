@@ -1,0 +1,22 @@
+// instead of using normalize.css, we can just use the universal selector 
+// browsers are getting better at handling this, so for this site, we don't need it
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; // force inheritance on each and every element - this value is initially set on the root html element
+}
+
+html {
+    // don't set this to a pixel value, because it overrides user defaults or browser defaults
+    // 10 / 16 = 62.5%  (target base px value / expected default)
+    // rems are not supported in older browsers (IE9)
+    font-size: 62.5%; // rem values are calculated off of the document root font size
+    // this defines what 1 rem is
+}
+
+// instead of applying font settings with the universal selector, we can utilize inheritance by applying it to the body instead
+body {
+    box-sizing: border-box; // changes box model so borders and paddings are no longer added to total width and height of an element
+}
