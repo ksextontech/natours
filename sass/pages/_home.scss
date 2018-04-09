@@ -11,7 +11,7 @@
         rgba($color-primary-light, 0.80),
         rgba($color-primary-dark, 0.80)
     ),
-    url('../../img/nat-4.jpg');
+    url('../img/nat-4.jpg');
     background-size: cover;
     
     // could use background-clip, but you can also transform
@@ -27,6 +27,6 @@
 
 .section-tours {
     background-color: $color-grey-light-1;
-    padding: 25rem 0 50rem 0;
+    padding: 25rem 0 15rem 0;
     margin-top: -12rem;
 }
