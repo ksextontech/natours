@@ -1,5 +1,7 @@
 .btn {
 
+    
+    &, // works for just a <button> and not anchor tags
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -10,6 +12,10 @@
         transition: all .2s ease-out;
         position: relative;
         font-size: $default-font-size;
+
+        // change for the <button> element
+    border: none;
+    cursor: pointer;
     }
 
     &:hover {
@@ -22,7 +28,9 @@
         }
     }
 
+    &:focus, // for form button clicks, its the same as clicking a link
     &:active {
+        outline: none; // for form input focus
         transform: translateY(-.1rem);
         box-shadow: 0 .5rem 1rem rgba($color-black, .1);
     }
