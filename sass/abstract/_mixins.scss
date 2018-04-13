@@ -1,14 +1,69 @@
 @mixin clearfix {
-    &:after {
+    &::after {
         content: "";
         display: table;
         clear: both;
     }
 }
 
-@mixin centerHorizontalVertical {
+@mixin absoluteCenter {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+// MEDIA QUERY MANAGER
+/*
+    DESKTOP FIRST APPROACH
+    0 - 600px:      Phone
+    600 - 900px:    Tablet portrait
+    900 - 1200px:   Tablet landscape
+    [1200 - 1800] is where our normal styles apply
+    1800px + :      Big desktop
+
+    // 1em or 1rem is always equal to the default font size of the browser (which the user can change)
+    // it isn't affected by the root document font size that we specify
+    
+    // so 1em = 16px
+    // 600px / 16px = 37.5em
+
+    $breakpoint argument options:
+    - phone
+    - tablet-portrait
+    - tablet-landscape
+    - big-desktop
+
+    ORDER of applying media queries:
+    1. Base + typography
+    2. general layout + grid
+    3. page layout
+    4. components
+*/
+@mixin respond($breakpoint) {
+
+    @if ($breakpoint == phone) {
+        @media (max-width: 37.5em) { // 600px
+            @content; // allows us to pass a block of rules into the mixin
+        }
+    }
+
+    @if ($breakpoint == tablet-portrait) {
+        @media (max-width: 56.25em) { // 900px
+            @content;
+        }
+    }
+
+    @if ($breakpoint == tablet-landscape) {
+        @media (max-width: 75em) { // 1200px
+            @content;
+        }
+    }
+
+    @if ($breakpoint == big-desktop) {
+        @media (min-width: 112.5em) { // 1800px
+            @content;
+        }
+    }
+    
 }

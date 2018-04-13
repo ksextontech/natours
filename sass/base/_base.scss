@@ -13,10 +13,34 @@ html {
     // 10 / 16 = 62.5%  (target base px value / expected default)
     // rems are not supported in older browsers (IE9)
     font-size: 62.5%; // rem values are calculated off of the document root font size
+    // the browser default is 16px, but can be changed by the user
     // this defines what 1 rem is
+    // by using rem and not pixels, we can scale everything by setting the font-size in media queries
+    // as long as the css rules are set to use rem for values
+
+    @include respond(tablet-landscape) { // width < 1200px?
+        font-size: 56.25%; // 1rem = 9px, 9/16 = 56.25%;
+    }
+
+    @include respond(tablet-portrait) { // width < 900px?
+        font-size: 50%; // 1rem = 8px, 8/16 = 50%;
+    }
+
+    // with a width of say 700px, we have conflicting rules with the two definitions above
+    // the winning rule is the last one declared, so the order matters
+    // if this was mobile first, the order would need to be reversed
+
+    @include respond(big-desktop) { // width > 1800px?
+        font-size: 75%; // 1rem = 12px, 12/16 = 75%;
+    }
 }
 
 // instead of applying font settings with the universal selector, we can utilize inheritance by applying it to the body instead
 body {
     box-sizing: border-box; // changes box model so borders and paddings are no longer added to total width and height of an element
+    padding: 3rem;
+
+    @include respond(tablet-portrait) {
+        padding: 0;
+    }
 }
