@@ -9,6 +9,13 @@
     opacity: 0;
     visibility: hidden; // without this text content will still be there, just not visible
     transition: all .3s;
+    
+    @supports(-webkit-backdrop-filter: blur(10px)) or (background-color: rgba($color-black, .3))
+    {
+        -webkit-backdrop-filter: blur(10px); // not supported in chrome
+        backdrop-filter: blur(10px);
+        background-color: rgba($color-black, .3);
+    }
 
     &__content {
         @include absoluteCenter;

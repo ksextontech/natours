@@ -10,6 +10,7 @@ body {
 .heading-primary {
     color: $color-white;
     text-transform: uppercase;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden; /* fixes moving of the element of child elements with animations */
     margin-bottom: 6rem;
 
